@@ -25,6 +25,7 @@
 package render.app;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 
 import render.animations.Attention;
@@ -123,70 +124,72 @@ public class MainActivity extends AppCompatActivity {
 
         buttonAttentionBounce.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                render.setAnimation(Attention.Bounce(imageView));
+                render.setAnimation(Attention.Bounce(imageView, Render.RenderConfiguration
+                        .build()
+                        .setRepeatCount(-1)));
                 render.start();
             }
         });
 
         buttonAttentionFlash.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                render.setAnimation(Attention.Flash(imageView));
+                render.setAnimation(Attention.Flash(imageView, null));
                 render.start();
             }
         });
 
         buttonAttentionPulse.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                render.setAnimation(Attention.Pulse(imageView));
+                render.setAnimation(Attention.Pulse(imageView, null));
                 render.start();
             }
         });
 
         buttonAttentionRuberband.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                render.setAnimation(Attention.RuberBand(imageView));
+                render.setAnimation(Attention.RuberBand(imageView, null));
                 render.start();
             }
         });
 
         buttonAttentionShake.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                render.setAnimation(Attention.Shake(imageView));
+                render.setAnimation(Attention.Shake(imageView, null));
                 render.start();
             }
         });
 
         buttonAttentionStandup.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                render.setAnimation(Attention.StandUp(imageView));
+                render.setAnimation(Attention.StandUp(imageView, null));
                 render.start();
             }
         });
 
         buttonAttentionSwing.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                render.setAnimation(Attention.Swing(imageView));
+                render.setAnimation(Attention.Swing(imageView, null));
                 render.start();
             }
         });
 
         buttonAttentionTada.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                render.setAnimation(Attention.Tada(imageView));
+                render.setAnimation(Attention.Tada(imageView, null));
                 render.start();
             }
         });
 
         buttonAttentionWave.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                render.setAnimation(Attention.Wave(imageView));
+                render.setAnimation(Attention.Wave(imageView, null));
                 render.start();
             }
         });
 
         buttonAttentionWobble.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                render.setAnimation(Attention.Wobble(imageView));
+                render.setAnimation(Attention.Wobble(imageView, null));
                 render.start();
             }
         });

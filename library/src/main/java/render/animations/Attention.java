@@ -28,31 +28,37 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.view.View;
 
-/*
-Kotlin version of the Attention class
-https://github.com/gayankuruppu/android-view-animations-kotlin/blob/master/library/src/main/java/render/animations/Attention.kt
-*/
+import androidx.annotation.Nullable;
 
-public class Attention{
-    public static AnimatorSet Bounce(View view) {
+
+public class Attention {
+    private static void updateRenderConfiguration(ObjectAnimator object,
+                                                  Render.RenderConfiguration renderConfiguration) {
+        if (renderConfiguration != null) {
+            object.setRepeatMode(renderConfiguration.repeatMode);
+        }
+    }
+
+    public static AnimatorSet Bounce(View view, @Nullable Render.RenderConfiguration renderConfiguration) {
         AnimatorSet animatorSet = new AnimatorSet();
 
         ObjectAnimator object = ObjectAnimator.ofFloat(view, "translationY", 0, 0, -30, 0, -15, 0, 0);
-
+        object.setRepeatCount(ObjectAnimator.INFINITE);
         animatorSet.playTogether(object);
+        updateRenderConfiguration(object, renderConfiguration);
         return animatorSet;
     }
 
-    public static AnimatorSet Flash(View view){
+    public static AnimatorSet Flash(View view, @Nullable Render.RenderConfiguration renderConfiguration) {
         AnimatorSet animatorSet = new AnimatorSet();
 
-        ObjectAnimator object =   ObjectAnimator.ofFloat(view, "alpha", 1, 0, 1, 0, 1);
+        ObjectAnimator object = ObjectAnimator.ofFloat(view, "alpha", 1, 0, 1, 0, 1);
 
         animatorSet.playTogether(object);
         return animatorSet;
     }
 
-    public static AnimatorSet Pulse(View view){
+    public static AnimatorSet Pulse(View view, @Nullable Render.RenderConfiguration renderConfiguration) {
         AnimatorSet animatorSet = new AnimatorSet();
 
         ObjectAnimator object1 = ObjectAnimator.ofFloat(view, "scaleY", 1, 1.1f, 1);
@@ -62,78 +68,78 @@ public class Attention{
         return animatorSet;
     }
 
-    public static AnimatorSet RuberBand(View view){
+    public static AnimatorSet RuberBand(View view, @Nullable Render.RenderConfiguration renderConfiguration) {
         AnimatorSet animatorSet = new AnimatorSet();
 
-        ObjectAnimator object1 = ObjectAnimator.ofFloat(view,  "scaleX", 1, 1.25f, 0.75f, 1.15f, 1);
-        ObjectAnimator object2 = ObjectAnimator.ofFloat(view,  "scaleY", 1, 0.75f, 1.25f, 0.85f, 1);
+        ObjectAnimator object1 = ObjectAnimator.ofFloat(view, "scaleX", 1, 1.25f, 0.75f, 1.15f, 1);
+        ObjectAnimator object2 = ObjectAnimator.ofFloat(view, "scaleY", 1, 0.75f, 1.25f, 0.85f, 1);
 
         animatorSet.playTogether(object1, object2);
         return animatorSet;
     }
 
-    public static AnimatorSet Shake(View view){
+    public static AnimatorSet Shake(View view, @Nullable Render.RenderConfiguration renderConfiguration) {
         AnimatorSet animatorSet = new AnimatorSet();
 
-        ObjectAnimator object = ObjectAnimator.ofFloat(view,   "translationX", 0, 25, -25, 25, -25, 15, -15, 6, -6, 0);
+        ObjectAnimator object = ObjectAnimator.ofFloat(view, "translationX", 0, 25, -25, 25, -25, 15, -15, 6, -6, 0);
 
         animatorSet.playTogether(object);
         return animatorSet;
     }
 
-    public static AnimatorSet StandUp(View view){
+    public static AnimatorSet StandUp(View view, @Nullable Render.RenderConfiguration renderConfiguration) {
         AnimatorSet animatorSet = new AnimatorSet();
         float x = (view.getWidth() - view.getPaddingLeft() - view.getPaddingRight()) / 2 + view.getPaddingLeft();
         float y = view.getHeight() - view.getPaddingBottom();
 
-        ObjectAnimator object1 = ObjectAnimator.ofFloat(view,   "pivotX", x, x, x, x, x);
-        ObjectAnimator object2 = ObjectAnimator.ofFloat(view,   "pivotY", y, y, y, y, y);
-        ObjectAnimator object3 = ObjectAnimator.ofFloat(view,   "rotationX", 55, -30, 15, -15, 0);
+        ObjectAnimator object1 = ObjectAnimator.ofFloat(view, "pivotX", x, x, x, x, x);
+        ObjectAnimator object2 = ObjectAnimator.ofFloat(view, "pivotY", y, y, y, y, y);
+        ObjectAnimator object3 = ObjectAnimator.ofFloat(view, "rotationX", 55, -30, 15, -15, 0);
 
         animatorSet.playTogether(object1, object2, object3);
         return animatorSet;
     }
 
-    public static AnimatorSet Swing(View view){
+    public static AnimatorSet Swing(View view, @Nullable Render.RenderConfiguration renderConfiguration) {
         AnimatorSet animatorSet = new AnimatorSet();
 
-        ObjectAnimator object = ObjectAnimator.ofFloat(view,   "rotation", 0, 10, -10, 6, -6, 3, -3, 0);
+        ObjectAnimator object = ObjectAnimator.ofFloat(view, "rotation", 0, 10, -10, 6, -6, 3, -3, 0);
 
         animatorSet.playTogether(object);
         return animatorSet;
     }
 
-    public static AnimatorSet Tada(View view){
+    public static AnimatorSet Tada(View view, @Nullable Render.RenderConfiguration renderConfiguration) {
         AnimatorSet animatorSet = new AnimatorSet();
 
-        ObjectAnimator object1 = ObjectAnimator.ofFloat(view,   "scaleX", 1, 0.9f, 0.9f, 1.1f, 1.1f, 1.1f, 1.1f, 1.1f, 1.1f, 1);
-        ObjectAnimator object2 = ObjectAnimator.ofFloat(view,   "scaleY", 1, 0.9f, 0.9f, 1.1f, 1.1f, 1.1f, 1.1f, 1.1f, 1.1f, 1);
-        ObjectAnimator object3 = ObjectAnimator.ofFloat(view,   "rotation", 0, -3, -3, 3, -3, 3, -3, 3, -3, 0);
+        ObjectAnimator object1 = ObjectAnimator.ofFloat(view, "scaleX", 1, 0.9f, 0.9f, 1.1f, 1.1f, 1.1f, 1.1f, 1.1f, 1.1f, 1);
+        ObjectAnimator object2 = ObjectAnimator.ofFloat(view, "scaleY", 1, 0.9f, 0.9f, 1.1f, 1.1f, 1.1f, 1.1f, 1.1f, 1.1f, 1);
+        ObjectAnimator object3 = ObjectAnimator.ofFloat(view, "rotation", 0, -3, -3, 3, -3, 3, -3, 3, -3, 0);
 
         animatorSet.playTogether(object1, object2, object3);
         return animatorSet;
     }
 
-    public static AnimatorSet Wave(View view){
+    public static AnimatorSet Wave(View view, @Nullable Render.RenderConfiguration renderConfiguration) {
         AnimatorSet animatorSet = new AnimatorSet();
         float x = (view.getWidth() - view.getPaddingLeft() - view.getPaddingRight()) / 2 + view.getPaddingLeft();
         float y = view.getHeight() - view.getPaddingBottom();
 
-        ObjectAnimator object1 = ObjectAnimator.ofFloat(view,   "rotation", 12, -12, 3, -3, 0);
-        ObjectAnimator object2 = ObjectAnimator.ofFloat(view,   "pivotX", x, x, x, x, x);
-        ObjectAnimator object3 = ObjectAnimator.ofFloat(view,   "pivotY", y, y, y, y, y);
+        ObjectAnimator object1 = ObjectAnimator.ofFloat(view, "rotation", 12, -12, 3, -3, 0);
+        ObjectAnimator object2 = ObjectAnimator.ofFloat(view, "pivotX", x, x, x, x, x);
+        ObjectAnimator object3 = ObjectAnimator.ofFloat(view, "pivotY", y, y, y, y, y);
 
         animatorSet.playTogether(object1, object2, object3);
         return animatorSet;
     }
 
-    public static AnimatorSet Wobble(View view){
+    public static AnimatorSet Wobble(View view, @Nullable Render.RenderConfiguration renderConfiguration) {
         AnimatorSet animatorSet = new AnimatorSet();
         float width = view.getWidth();
         float one = (float) (width / 100.0);
         float x = 0 * one;
 
-        ObjectAnimator object1 = ObjectAnimator.ofFloat(view,   "translationX", x, -25 * one, 20 * one, -15 * one, 10 * one, -5 * one, x, 0);
+        ObjectAnimator object1 = ObjectAnimator.ofFloat(view, "translationX", x, -25 * one, 20 * one, -15 * one, 10 * one, -5 * one, x, 0);
         ObjectAnimator object2 = ObjectAnimator.ofFloat(view, "rotation", 0, -5, 3, -3, 2, -1, 0);
 
         animatorSet.playTogether(object1, object2);

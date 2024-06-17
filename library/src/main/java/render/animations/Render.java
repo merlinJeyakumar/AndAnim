@@ -39,12 +39,12 @@ public class Render {
     private AnimatorSet animatorSet;
 
     // Render render = new Render(this)
-    public Render  (Context cx) {
+    public Render(Context cx) {
         this.cx = cx;
     }
 
     // render.setAnimation(Bounce.In(textView))
-    public void setAnimation (AnimatorSet animationSet) {
+    public void setAnimation(AnimatorSet animationSet) {
         this.animatorSet = animationSet;
     }
 
@@ -56,9 +56,28 @@ public class Render {
     }
 
     // render.setDuration(2000)
-    public void setDuration(long duration){
+    public void setDuration(long duration) {
         this.duration = duration;
     }
 
+    public static class RenderConfiguration {
+        public int repeatCount = 0;//Int | ObjectAnimator.INFINITE
+        public int repeatMode = 0;//ObjectAnimator.REVERSE || RESTART
 
+        public RenderConfiguration setRepeatCount(int count) {
+            //ObjectAnimator.INFINITE
+            repeatCount = count;
+            return this;
+        }
+
+        public RenderConfiguration setRepeatMode(int mode) {
+            //ObjectAnimator.INFINITE
+            repeatMode = mode;
+            return this;
+        }
+
+        public static RenderConfiguration build() {
+            return new RenderConfiguration();
+        }
+    }
 }
