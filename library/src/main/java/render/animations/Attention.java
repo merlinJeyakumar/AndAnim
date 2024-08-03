@@ -35,7 +35,9 @@ public class Attention {
     private static void updateRenderConfiguration(ObjectAnimator object,
                                                   Render.RenderConfiguration renderConfiguration) {
         if (renderConfiguration != null) {
+            object.setRepeatCount(renderConfiguration.repeatCount);
             object.setRepeatMode(renderConfiguration.repeatMode);
+            object.setDuration(renderConfiguration.duration);
         }
     }
 
@@ -55,6 +57,7 @@ public class Attention {
         ObjectAnimator object = ObjectAnimator.ofFloat(view, "alpha", 1, 0, 1, 0, 1);
 
         animatorSet.playTogether(object);
+        updateRenderConfiguration(object, renderConfiguration);
         return animatorSet;
     }
 
@@ -65,6 +68,8 @@ public class Attention {
         ObjectAnimator object2 = ObjectAnimator.ofFloat(view, "scaleX", 1, 1.1f, 1);
 
         animatorSet.playTogether(object1, object2);
+        updateRenderConfiguration(object1, renderConfiguration);
+        updateRenderConfiguration(object2, renderConfiguration);
         return animatorSet;
     }
 
@@ -75,6 +80,8 @@ public class Attention {
         ObjectAnimator object2 = ObjectAnimator.ofFloat(view, "scaleY", 1, 0.75f, 1.25f, 0.85f, 1);
 
         animatorSet.playTogether(object1, object2);
+        updateRenderConfiguration(object1, renderConfiguration);
+        updateRenderConfiguration(object2, renderConfiguration);
         return animatorSet;
     }
 
@@ -84,6 +91,7 @@ public class Attention {
         ObjectAnimator object = ObjectAnimator.ofFloat(view, "translationX", 0, 25, -25, 25, -25, 15, -15, 6, -6, 0);
 
         animatorSet.playTogether(object);
+        updateRenderConfiguration(object, renderConfiguration);
         return animatorSet;
     }
 
@@ -97,6 +105,9 @@ public class Attention {
         ObjectAnimator object3 = ObjectAnimator.ofFloat(view, "rotationX", 55, -30, 15, -15, 0);
 
         animatorSet.playTogether(object1, object2, object3);
+        updateRenderConfiguration(object1, renderConfiguration);
+        updateRenderConfiguration(object2, renderConfiguration);
+        updateRenderConfiguration(object3, renderConfiguration);
         return animatorSet;
     }
 
@@ -106,6 +117,7 @@ public class Attention {
         ObjectAnimator object = ObjectAnimator.ofFloat(view, "rotation", 0, 10, -10, 6, -6, 3, -3, 0);
 
         animatorSet.playTogether(object);
+        updateRenderConfiguration(object, renderConfiguration);
         return animatorSet;
     }
 
@@ -117,6 +129,9 @@ public class Attention {
         ObjectAnimator object3 = ObjectAnimator.ofFloat(view, "rotation", 0, -3, -3, 3, -3, 3, -3, 3, -3, 0);
 
         animatorSet.playTogether(object1, object2, object3);
+        updateRenderConfiguration(object1, renderConfiguration);
+        updateRenderConfiguration(object2, renderConfiguration);
+        updateRenderConfiguration(object3, renderConfiguration);
         return animatorSet;
     }
 
@@ -130,6 +145,9 @@ public class Attention {
         ObjectAnimator object3 = ObjectAnimator.ofFloat(view, "pivotY", y, y, y, y, y);
 
         animatorSet.playTogether(object1, object2, object3);
+        updateRenderConfiguration(object1, renderConfiguration);
+        updateRenderConfiguration(object2, renderConfiguration);
+        updateRenderConfiguration(object3, renderConfiguration);
         return animatorSet;
     }
 
@@ -143,6 +161,8 @@ public class Attention {
         ObjectAnimator object2 = ObjectAnimator.ofFloat(view, "rotation", 0, -5, 3, -3, 2, -1, 0);
 
         animatorSet.playTogether(object1, object2);
+        updateRenderConfiguration(object1, renderConfiguration);
+        updateRenderConfiguration(object2, renderConfiguration);
         return animatorSet;
     }
 }

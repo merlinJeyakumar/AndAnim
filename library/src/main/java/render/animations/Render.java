@@ -25,6 +25,7 @@
 package render.animations;
 
 import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.view.animation.AccelerateDecelerateInterpolator;
 
@@ -62,7 +63,8 @@ public class Render {
 
     public static class RenderConfiguration {
         public int repeatCount = 0;//Int | ObjectAnimator.INFINITE
-        public int repeatMode = 0;//ObjectAnimator.REVERSE || RESTART
+        public int repeatMode = ObjectAnimator.RESTART;//ObjectAnimator.REVERSE || RESTART
+        public long duration = 2 * 1000;
 
         public RenderConfiguration setRepeatCount(int count) {
             //ObjectAnimator.INFINITE
@@ -73,6 +75,11 @@ public class Render {
         public RenderConfiguration setRepeatMode(int mode) {
             //ObjectAnimator.INFINITE
             repeatMode = mode;
+            return this;
+        }
+
+        public RenderConfiguration setDuration(long duration) {
+            this.duration = duration;
             return this;
         }
 
